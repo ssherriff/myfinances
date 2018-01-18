@@ -8,6 +8,11 @@ Only datastore available at the moment is Fieldbook.
 
 ## Issues
 
+  * Authentication
+  * Transaction form validation
+  * Transacton editing (inline?)
+  * ReactJS UI
+  * Replace http page loads in controllers with API for ReactJS
   * Replace Fieldbook with another datastore like Postgres
   * Creation of categories and more complex structures. Multiple levels.
   * Add concept of accounts to group transactions by Bank Account, Credit Cards, Investment Accounts, etc.
