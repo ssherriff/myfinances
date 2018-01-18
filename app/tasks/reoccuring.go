@@ -7,6 +7,7 @@ import (
 	"github.com/ssherriff/my-finances-app/app/model"
 )
 
+//RegisterReoccuring checks reoccuring records to see if any need to be registered as transactions
 func (task *Scheduler) RegisterReoccuring() {
 	log.Println("Registering reoccuring tasks")
 	reoccuring, err := task.ReoccuringDatastore.GetAllReoccuringOnOrBeforeDate(time.Now())

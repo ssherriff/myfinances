@@ -27,6 +27,7 @@ func (ds *ReoccuringFieldbookDatastore) GetAllReoccuring() ([]Reoccuring, error)
 	return reoccuring, nil
 }
 
+//SaveReoccuring create or update a reoccuring record
 func (ds *ReoccuringFieldbookDatastore) SaveReoccuring(reoccuring *Reoccuring) (err error) {
 	if reoccuring.ID == 0 {
 		err = ds.Client.CreateRecord(reoccuringSheet, reoccuring)

@@ -19,6 +19,7 @@ type Reoccuring struct {
 	Amount      decimal.Decimal `json:"amount,omitempty"`
 }
 
+//SetNextDate set the next date for reoocurance based on current NextDate value
 func (r *Reoccuring) SetNextDate() {
 	switch r.Period {
 	case "Weekly":

@@ -11,7 +11,7 @@ import (
 	"github.com/ssherriff/my-finances-app/app/view"
 )
 
-//Home Controller for requests
+//Home Controller
 type Home struct {
 	TransactionDatastore model.TransactionDatastore
 }

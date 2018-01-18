@@ -24,10 +24,14 @@ func (ds *TransactionFieldbookDatastore) GetAllTransactions() ([]Transaction, er
 	return transactions, nil
 }
 
+//GetAllTransactionsByMonthYear gets transactions for the month and year provided
 func (ds *TransactionFieldbookDatastore) GetAllTransactionsByMonthYear(month, year int) ([]Transaction, error) {
+	//Fieldbook doesn't have searching, for the sake of demo, just return all transactions
+	// db or other datastore would be more capable
 	return ds.GetAllTransactions()
 }
 
+//SaveTransaction create or update transaction record
 func (ds *TransactionFieldbookDatastore) SaveTransaction(transaction *Transaction) (err error) {
 	if transaction.ID == 0 {
 		err = ds.Client.CreateRecord(transactionSheet, transaction)
