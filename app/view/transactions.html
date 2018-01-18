@@ -2,6 +2,10 @@
 
 {{ block Body() }}
 <h1>Transactions</h1>
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#transactionModal">
+    New Transaction
+</button>
+<br/>
 <table class="table">
     <thead>
         <tr>
@@ -22,4 +26,81 @@
         {{end}}
     </tbody>
 </table>
+
+<div class="modal fade" id="transactionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New Transaction</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form>
+                <div class="form-group">
+                  <label for="date">Date</label>
+                  <input type="text" class="form-control" id="date" aria-describedby="dateHelp" placeholder="Enter date in format DD/MM/YYYY">
+                  <small id="dateHelp" class="form-text text-muted">Enter the transaction date in the format DD/MM/YYYY</small>
+                </div>
+                <div class="form-group">
+                    <label for="categories">Category</label>
+                    <select class="form-control" id="category" name="category">
+                        {{ range category := .Data.Categories }}
+                        <option value="{{ category.ID }}">{{ category.Name }}</option>
+                        {{ end }}
+                    </select>
+                </div>
+                <div class="form-group">
+                  <label for="description">Description</label>
+                  <input type="text" class="form-control" id="description" placeholder="Transaction description">
+                </div>
+                <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <input type="text" class="form-control" id="amount" placeholder="Transaction amount">
+                  </div>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary save-transaction">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{{ end }}
+
+{{ block FooterJS() }}
+<script>
+    (function(){
+    $('.save-transaction').on('click', function(){
+        $.ajax({
+            url: '/transactions',
+            type: 'POST',
+            data: {
+              date: $("#date").val(),
+              description: $("#description").val(),
+              category: $("#category").val(),
+              amount: $("#amount").val()
+            },
+            contentType: 'application/x-www-form-urlencoded'
+          })
+          .done(function (d, status, xhr) {
+            /*$("#date").val("");
+            $("#description").val("");
+            $("#category").val("");
+            $("#amount").val("");*/
+
+            $('#transactionModal').modal('hide');
+
+            // temporary to reload list, better to just update current page with new entry
+            location.reload();
+          })
+          .fail(function (xhr, status, error) {
+              // TODO handle fail
+              console.log(xhr.status + ":" + error + ":" + result.message);
+          });
+    });
+})();
+</script>
 {{ end }}
