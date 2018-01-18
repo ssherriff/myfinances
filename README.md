@@ -49,6 +49,15 @@ Run requires some parameters to be passed in.
 
     ./myfinances -key=FIELDBOOKKEY -secret=FIELDBOOKSECRET -bookID=FIELDBOOKBOOKID
 
+Easiest to use helper run script. Copy run.default.sh and just rename as run.sh.
+Edit this line with your details:
+
+    ./myfinances -key=key-1 -secret=SECRET -bookID=BOOKID
+
+Save and just run as:
+
+    ./run.sh
+
 ## Testing
 
 App is setup to use GoConvey, but standard go testing can also be used. A helper script is available.
