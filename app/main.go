@@ -13,7 +13,6 @@ import (
 	"github.com/ssherriff/my-finances-app/app/controller"
 	"github.com/ssherriff/my-finances-app/app/model"
 	"github.com/ssherriff/my-finances-app/app/tasks"
-	"github.com/ssherriff/my-finances-app/app/view"
 )
 
 func main() {
@@ -34,6 +33,9 @@ func main() {
 	}
 
 	// Controllers available to the application
+	homeController := &controller.Home{
+		TransactionDatastore: transactionDatastore,
+	}
 	transactionController := &controller.Transaction{
 		TransactionDatastore: transactionDatastore,
 	}
@@ -45,9 +47,7 @@ func main() {
 	r.Use(middleware.Logger)
 	r.Use(middleware.Recoverer)
 
-	r.Get("/", func(w http.ResponseWriter, r *http.Request) {
-		view.RenderTemplate(w, "home.html", view.NewPage("Home", "", nil))
-	})
+	r.Get("/", homeController.Main)
 
 	r.Mount("/transactions", transactionController.Routes())
 

@@ -9,6 +9,7 @@ import (
 //TransactionDatastore access methods for transaction data
 type TransactionDatastore interface {
 	GetAllTransactions() ([]Transaction, error)
+	GetAllTransactionsByMonthYear(month, year int) ([]Transaction, error)
 	SaveTransaction(transaction *Transaction) error
 
 	GetAllCategories() ([]Category, error)

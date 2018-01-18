@@ -1,7 +1,34 @@
 {{ extends "layout.html" }}
 
 {{ block Body() }}
-<h1>Bootstrap starter template</h1>
-<p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
+<div class="row">
+    <div class="col-md-6">
+        <h2>Spending this month</h2>
+        <canvas id="myChart" width="400" height="400"></canvas>
+        <script>
+        var ctx = document.getElementById("myChart");
+        var myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: [{{ .Data.SpendingLabels | raw }}],
+                datasets: [{
+                    data: [{{ .Data.SpendingData }}],
+                    backgroundColor: [
+                        '#007bff',
+                        '#fd7e14',
+                        '#ffc107',
+                        '#28a745',
+                        '#dc3545',
+                        '#6610f2',
+                        '#ccc'
+                    ]
+                }]
+            }
+        });
+        </script>
+    </div>
+    <div class="col-md-6">
+    </div>
+  </div>
 
 {{ end }}

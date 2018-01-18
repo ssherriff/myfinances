@@ -24,6 +24,10 @@ func (ds *TransactionFieldbookDatastore) GetAllTransactions() ([]Transaction, er
 	return transactions, nil
 }
 
+func (ds *TransactionFieldbookDatastore) GetAllTransactionsByMonthYear(month, year int) ([]Transaction, error) {
+	return ds.GetAllTransactions()
+}
+
 func (ds *TransactionFieldbookDatastore) SaveTransaction(transaction *Transaction) (err error) {
 	if transaction.ID == 0 {
 		err = ds.Client.CreateRecord(transactionSheet, transaction)
