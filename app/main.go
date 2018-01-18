@@ -29,6 +29,9 @@ func main() {
 	transactionDatastore := &model.TransactionFieldbookDatastore{
 		Client: fieldbookClient,
 	}
+	reoccuringDatastore := &model.ReoccuringFieldbookDatastore{
+		Client: fieldbookClient,
+	}
 
 	// Controllers available to the application
 	transactionController := &controller.Transaction{
@@ -48,10 +51,15 @@ func main() {
 
 	r.Mount("/transactions", transactionController.Routes())
 
-	log.Println("Scheduling RegisterReoccuring task")
+	taskScheduler := &tasks.Scheduler{
+		TransactionDatastore: transactionDatastore,
+		ReoccuringDatastore:  reoccuringDatastore,
+	}
+
+	log.Println("Scheduling tasks")
 	c := cron.New()
 	c.AddFunc("@daily", func() {
-		tasks.RegisterReoccuring()
+		taskScheduler.RegisterReoccuring()
 	})
 	c.Start()
 

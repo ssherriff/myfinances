@@ -9,6 +9,7 @@ import (
 //TransactionDatastore access methods for transaction data
 type TransactionDatastore interface {
 	GetAllTransactions() ([]Transaction, error)
+	SaveTransaction(transaction *Transaction) error
 
 	GetAllCategories() ([]Category, error)
 }
@@ -21,10 +22,11 @@ type Category struct {
 
 //Transaction model of an account transaction
 type Transaction struct {
-	Date        fieldbook.Time  `json:"date"`
-	Description string          `json:"description"`
-	Category    []Category      `json:"category"`
-	Amount      decimal.Decimal `json:"amount"`
+	ID          int             `json:"id,omitempty"`
+	Date        fieldbook.Time  `json:"date,omitempty"`
+	Description string          `json:"description,omitempty"`
+	Category    []Category      `json:"category,omitempty"`
+	Amount      decimal.Decimal `json:"amount,omitempty"`
 }
 
 //DateDisplay returns date formatted for display

@@ -24,6 +24,15 @@ func (ds *TransactionFieldbookDatastore) GetAllTransactions() ([]Transaction, er
 	return transactions, nil
 }
 
+func (ds *TransactionFieldbookDatastore) SaveTransaction(transaction *Transaction) (err error) {
+	if transaction.ID == 0 {
+		err = ds.Client.CreateRecord(transactionSheet, transaction)
+	} else {
+		err = ds.Client.UpdateRecord(transactionSheet, transaction.ID, transaction)
+	}
+	return
+}
+
 //GetAllCategories gets a list of all categories for grouping transactions stored in Fieldbook in the 'Transactions' sheet
 func (ds *TransactionFieldbookDatastore) GetAllCategories() ([]Category, error) {
 	var categories []Category
