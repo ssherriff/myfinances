@@ -1,6 +1,6 @@
 package tasks
 
-import "github.com/ssherriff/my-finances-app/app/model"
+import "github.com/ssherriff/myfinances/app/model"
 
 //Scheduler task scheduler
 type Scheduler struct {

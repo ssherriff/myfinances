@@ -7,8 +7,8 @@ import (
 
 	"github.com/shopspring/decimal"
 
-	"github.com/ssherriff/my-finances-app/app/model"
-	"github.com/ssherriff/my-finances-app/app/view"
+	"github.com/ssherriff/myfinances/app/model"
+	"github.com/ssherriff/myfinances/app/view"
 )
 
 //Home Controller

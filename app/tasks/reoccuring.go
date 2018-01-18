@@ -4,7 +4,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/ssherriff/my-finances-app/app/model"
+	"github.com/ssherriff/myfinances/app/model"
 )
 
 //RegisterReoccuring checks reoccuring records to see if any need to be registered as transactions

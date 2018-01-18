@@ -11,8 +11,8 @@ import (
 	"github.com/shopspring/decimal"
 	fieldbook "github.com/trexart/go-fieldbook"
 
-	"github.com/ssherriff/my-finances-app/app/model"
-	"github.com/ssherriff/my-finances-app/app/view"
+	"github.com/ssherriff/myfinances/app/model"
+	"github.com/ssherriff/myfinances/app/view"
 )
 
 //Transaction Controller for transaction requests

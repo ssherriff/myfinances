@@ -5,7 +5,7 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"github.com/ssherriff/my-finances-app/app/model"
+	"github.com/ssherriff/myfinances/app/model"
 
 	. "github.com/smartystreets/goconvey/convey"
 )

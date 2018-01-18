@@ -10,9 +10,9 @@ import (
 	"github.com/robfig/cron"
 	fieldbook "github.com/trexart/go-fieldbook"
 
-	"github.com/ssherriff/my-finances-app/app/controller"
-	"github.com/ssherriff/my-finances-app/app/model"
-	"github.com/ssherriff/my-finances-app/app/tasks"
+	"github.com/ssherriff/myfinances/app/controller"
+	"github.com/ssherriff/myfinances/app/model"
+	"github.com/ssherriff/myfinances/app/tasks"
 )
 
 func main() {
